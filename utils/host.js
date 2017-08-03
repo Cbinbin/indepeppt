@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'https://api.newteo.com/'
+  url: 'https://ppt.cbinbin.com/'
 }
