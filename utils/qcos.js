@@ -45,7 +45,7 @@ function upload(req, res, single) {
   return fileUrl
 }
 
-function uploadFile(filePath, size, single) {
+function uploadFile(codeBuffer, filePath, size, single) {
   var fileUrl = new Promise((resolve, reject)=> {
     var rs = fs.createReadStream(filePath)
       , md5Hash = crypto.createHash('md5')
@@ -57,11 +57,11 @@ function uploadFile(filePath, size, single) {
         Bucket: qcBucket,
         Region: qcRegion,
         Key: single + '/' + t + '_' + filePath.substring(15),
-        Body: filePath,
+        Body: codeBuffer,
         ContentLength: size
       }
       qcloud.putObject(params, (err, data)=> {
-        if(err) return reject(err)
+        if(err) return reject(JSON.stringify(err))
         var url = geturl(qcBucket, qcAppId, params.Key)
         data.ETag = data.ETag.replace(/\"/g, "")
         if(reTag === data.ETag) resolve(url)

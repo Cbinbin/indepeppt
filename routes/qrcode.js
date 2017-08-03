@@ -23,7 +23,7 @@ router.get('/', (req, res)=> {
       })
       fileStream.write(codeBuffer)
       fileStream.end(()=> {
-        qcos.uploadFile(filepath, fileSize, 'ppt/qrcodes').then((url)=> {
+        qcos.uploadFile(codeBuffer, filepath, fileSize, 'ppt/qrcodes').then((url)=> {
           fs.unlink(filepath, (err)=> {
             if(err) return console.log('err')
             //删除本地文件
