@@ -1,0 +1,30 @@
+{
+  "name": "indepeppt",
+  "version": "1.0.0",
+  "description": "Independent interface",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cbinbin/indepeppt.git"
+  },
+  "keywords": [
+    "wechat"
+  ],
+  "author": "cbinbin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cbinbin/indepeppt/issues"
+  },
+  "homepage": "https://github.com/Cbinbin/indepeppt#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.5"
+  }
+}
