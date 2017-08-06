@@ -6,7 +6,7 @@ function getQRCode(path, field, accessToken) {
     var fields = String(field)
     request.post(`${wxApis.qrcode}?access_token=${accessToken}`)
     .send({
-      path: `pages/share/share?router=scanCode&field=${fields}`,
+      path: `${fields}`,//`pages/share/share?router=scanCode&field=${fields}`,
       width: 480,
     })
     .set('Content-Type', 'application/json')
