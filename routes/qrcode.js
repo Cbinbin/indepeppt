@@ -8,8 +8,11 @@ const router = require('express').Router()
 
 router.get('/', (req, res)=> {
   const field = req.query.field
+    , path = req.query.path
+  if(!field) return res.send({code: 400, errMsg: 'err', data: '缺少必要参数' })
   getXCXToken(appId, appSecret).then((accessToken)=> {
-    getQRCode(field, accessToken).then((data)=> {
+    getQRCode(path, field, accessToken).then((data)=> {
+      if(data.err) return res.send({code: 444, errMsg: 'wechat error', data: data.err })
       var codeBuffer = data.QRcodeBuffer
         , fileSize = data.fileSize
         , fileName = `scanQRcode.jpg`
