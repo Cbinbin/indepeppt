@@ -1,12 +1,12 @@
 const request = require('superagent')
   , wxApis = require('./wxApis')
 
-function getQRCode(path, field, accessToken) {
+function getQRCode(id, field, accessToken) {
   var codeData = new Promise((resolve, reject)=> {
     var fields = String(field)
     request.post(`${wxApis.qrcode}?access_token=${accessToken}`)
     .send({
-      path: `${fields}`,//`pages/share/share?router=scanCode&field=${fields}`,
+      path: `${fields}?router=scanCode&id=${id}`,//`pages/share/share?router=scanCode&field=${fields}`,
       width: 480,
     })
     .set('Content-Type', 'application/json')
